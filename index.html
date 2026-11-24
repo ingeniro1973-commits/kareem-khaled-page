@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>م. كريم خالد — أستاذ الفيزياء للثانوية العامة</title>
+  <style>
+    :root {
+      --bg-main: #070d1f;
+      --bg-card: #0f1a36;
+      --bg-input: #060a17;
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --accent: #3b82f6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      direction: rtl;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      background: linear-gradient(170deg, #050914 0%, var(--bg-main) 60%, #06261d 100%);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 16px 12px 56px;
+    }
+
+    .container {
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.16);
+      color: #6ee7b7;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .teacher-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .teacher-bio {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .stat-box {
+      background: rgba(7, 13, 31, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 6px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 12px;
+      border: none;
+      font-size: 15px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.93;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(59, 130, 246, 0.18);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      margin-top: 10px;
+      font-size: 13px;
+      padding: 10px 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    .schedule-item {
+      background: rgba(7, 13, 31, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sched-grade {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .sched-days {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .sched-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .tag-online {
+      background: rgba(59, 130, 246, 0.2);
+      color: #93c5fd;
+    }
+
+    .tag-center {
+      background: rgba(16, 185, 129, 0.2);
+      color: #6ee7b7;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 4px 0;
+    }
+
+    .faq-a {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: none;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #e2e8f0;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: #ffffff;
+      font-size: 14px;
+      direction: rtl;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .error-msg {
+      color: #fca5a5;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: none;
+    }
+
+    .wa-fallback-box {
+      display: none;
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(7, 13, 31, 0.92);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .fallback-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+
+    .fallback-status {
+      background: rgba(16, 185, 129, 0.18);
+      color: #6ee7b7;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .message-preview {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px 0;
+      white-space: pre-line;
+      color: #e2e8f0;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+
+    .footer span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <span class="badge">دفعة 2027 • أونلاين وسنتر</span>
+      <h1 class="teacher-name">مهندس كريم خالد</h1>
+      <p class="teacher-bio">
+        تبسيط الفيزياء للثانوية العامة بأسلوب الفهم والتطبيق العملي، مع امتحانات أسبوعية ومتابعة مستمرة لولي الأمر.
+      </p>
+
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num">+10</div>
+          <div class="stat-lbl">سنوات خبرة</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">أسبوعي</div>
+          <div class="stat-lbl">امتحان وتقييم</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">24/7</div>
+          <div class="stat-lbl">دعم للطلاب</div>
+        </div>
+      </div>
+
+      <a href="#bookingSection" class="btn btn-whatsapp">احجز مكانك الآن عبر واتساب</a>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">مواعيد المجموعات المتاحة</h2>
+
+      <div class="schedule-item">
+        <div>
+          <div class="sched-grade">الصف الثالث الثانوي — مجموعة (أ)</div>
+          <div class="sched-days">السبت والثلاثاء • الساعة 4:00 عصراً</div>
+        </div>
+        <span class="sched-tag tag-center">سنتر</span>
+      </div>
+
+      <div class="schedule-item">
+        <div>
+          <div class="sched-grade">الصف الثالث الثانوي — أونلاين</div>
+          <div class="sched-days">الأحد والأربعاء • الساعة 8:00 مساءً</div>
+        </div>
+        <span class="sched-tag tag-online">أونلاين</span>
+      </div>
+
+      <div class="schedule-item">
+        <div>
+          <div class="sched-grade">الصف الثاني الثانوي</div>
+          <div class="sched-days">الإثنين والخميس • الساعة 6:00 مساءً</div>
+        </div>
+        <span class="sched-tag tag-center">سنتر + أونلاين</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">أسئلة متكررة من الطلاب وأولياء الأمور</h2>
+
+      <div class="faq-item open">
+        <button type="button" class="faq-q">
+          <span>إزاي بيتم الحجز وتأكيد الاشتراك؟</span>
+          <span>+</span>
+        </button>
+        <div class="faq-a">
+          بتملى بياناتك في النموذج تحت وبتتحول تلقائياً لواتساب السكرتارية لتأكيد الموعد واستلام تفاصيل الدفع أو الحضور.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span>هل في متابعة للواجبات والامتحانات؟</span>
+          <span>+</span>
+        </button>
+        <div class="faq-a">
+          أيوه، في امتحان إلكتروني أو ورقي كل أسبوع، وبتوصل نتيجة الطالب لولي الأمر بانتظام.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button type="button" class="faq-q">
+          <span>لو فاتتني حصة أقدر أعوضها إزاي؟</span>
+          <span>+</span>
+        </button>
+        <div class="faq-a">
+          متاح حصص تعويضية مسجلة أو حضور في مجموعة بديلة بعد التنسيق مع السكرتارية.
+        </div>
+      </div>
+    </div>
+
+    <div id="bookingSection" class="card">
+      <h2 class="section-title">سجّل بياناتك للحجز السريع</h2>
+
+      <div class="form-group">
+        <label for="studentName">اسم الطالب ثلاثي</label>
+        <input type="text" id="studentName" placeholder="اكتب اسمك هنا..." />
+      </div>
+
+      <div class="form-group">
+        <label for="studentGrade">الصف الدراسي</label>
+        <select id="studentGrade">
+          <option value="الصف الثالث الثانوي">الصف الثالث الثانوي</option>
+          <option value="الصف الثاني الثانوي">الصف الثاني الثانوي</option>
+          <option value="الصف الأول الثانوي">الصف الأول الثانوي</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="studySystem">نظام الحضور المفضل</label>
+        <select id="studySystem">
+          <option value="أونلاين">أونلاين</option>
+          <option value="حضور في السنتر">حضور في السنتر</option>
+        </select>
+      </div>
+
+      <div id="formError" class="error-msg">برجاء كتابة اسم الطالب أولاً.</div>
+
+      <button type="button" id="sendWhatsappBtn" class="btn btn-whatsapp">
+        إرسال طلب الحجز على واتساب
+      </button>
+
+      <div id="waFallbackBox" class="wa-fallback-box">
+        <div class="fallback-header">
+          <strong>تم تجهيز طلب الحجز لرقم 01213027021</strong>
+          <span class="fallback-status">جاهز</span>
+        </div>
+        <div>إذا حظر إطار المعاينة (iframe) فتح نافذة خارجية تلقائياً، يمكنك فتح الرابط المباشر بالأسفل أو نسخ الرابط أو نسخ نص الرسالة الجاهزة فوراً:</div>
+        <div id="messagePreview" class="message-preview"></div>
+        <a id="waDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="font-size:13px;padding:10px 14px;">
+          فتح واتساب مباشرة (wa.me/201213027021)
+        </a>
+        <button type="button" id="copyWaLinkBtn" class="btn btn-secondary">نسخ رابط الواتساب</button>
+        <button type="button" id="copyMsgBtn" class="btn btn-secondary">نسخ نص الرسالة الجاهزة</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      تصميم وتطوير: <span>نظملي</span>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const TEACHER_WHATSAPP = "201213027021";
+
+      document.querySelectorAll(".faq-q").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = btn.parentElement;
+          item.classList.toggle("open");
+        });
+      });
+
+      function buildPlainMessage(name, grade, system) {
+        return (
+          `السلام عليكم مهندس كريم خالد، أرغب في حجز مكان في دروس الفيزياء:\n` +
+          `• اسم الطالب: ${name}\n` +
+          `• الصف الدراسي: ${grade}\n` +
+          `• نظام الحضور: ${system}`
+        );
+      }
+
+      function buildWhatsappUrl(plainMessage) {
+        return `https://wa.me/${TEACHER_WHATSAPP}?text=${encodeURIComponent(plainMessage)}`;
+      }
+
+      function copyTextFallback(text, btn, defaultLabel, doneLabel) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).catch(() => {});
+        } else {
+          const temp = document.createElement("textarea");
+          temp.value = text;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand("copy");
+          document.body.removeChild(temp);
+        }
+        btn.textContent = doneLabel;
+        setTimeout(() => {
+          btn.textContent = defaultLabel;
+        }, 2000);
+      }
+
+      document.getElementById("sendWhatsappBtn").addEventListener("click", () => {
+        const name = document.getElementById("studentName").value.trim();
+        const grade = document.getElementById("studentGrade").value;
+        const system = document.getElementById("studySystem").value;
+        const errEl = document.getElementById("formError");
+        const fallbackBox = document.getElementById("waFallbackBox");
+        const directLink = document.getElementById("waDirectLink");
+        const previewEl = document.getElementById("messagePreview");
+
+        if (!name) {
+          errEl.style.display = "block";
+          return;
+        }
+        errEl.style.display = "none";
+
+        const plainMsg = buildPlainMessage(name, grade, system);
+        const url = buildWhatsappUrl(plainMsg);
+
+        previewEl.textContent = plainMsg;
+        directLink.href = url;
+        fallbackBox.style.display = "block";
+
+        try {
+          const opened = window.open(url, "_blank", "noopener,noreferrer");
+          if (!opened) {
+            window.location.href = url;
+          }
+        } catch (e) {
+          window.location.href = url;
+        }
+      });
+
+      document.getElementById("copyWaLinkBtn").addEventListener("click", function () {
+        const url = document.getElementById("waDirectLink").href;
+        copyTextFallback(url, this, "نسخ رابط الواتساب", "تم نسخ الرابط");
+      });
+
+      document.getElementById("copyMsgBtn").addEventListener("click", function () {
+        const msg = document.getElementById("messagePreview").textContent;
+        copyTextFallback(msg, this, "نسخ نص الرسالة الجاهزة", "تم نسخ نص الرسالة");
+      });
+    })();
+  </script>
+</body>
+  </html>
+  
